@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>Acesso ao Sistema</title>
+</h:head>
+<h:body>
+
+	<h:form id="formLogin">
+		
+		<h:panelGrid >
+			<p:growl id="mensagem" showDetail="true" sticky="true" />
+		
+			<h:outputLabel for="itUsuario">Usuário:</h:outputLabel>
+			<p:inputText id="itUsuario" required="true" requiredMessage="Campo usuário não informado!" 
+				value="#{InicioMB.usuario.usuario}" >
+			</p:inputText>
+			
+			<h:outputLabel for="itSenha">Senha:</h:outputLabel>
+			<p:inputText id="itSenha" required="true" requiredMessage="Campo senha não informado!" 
+				value="#{InicioMB.usuario.senha}" >
+			</p:inputText>
+			
+			<p:commandButton value="Acessar" action="#{InicioMB.validarUsuario}" ajax="false" />
+		</h:panelGrid>
+
+	</h:form>
+
+</h:body>
+</html>

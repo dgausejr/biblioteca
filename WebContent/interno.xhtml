@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>Acesso Interno</title>
+</h:head>
+<h:body>
+
+<h:form>
+	<p:menu>
+		<p:submenu label="Pré-Cadastros">
+			<p:menuitem value="Funcionário"></p:menuitem>
+			<p:separator/>
+			<p:menuitem value="Livro"></p:menuitem>
+			<p:separator/>
+			<p:menuitem value="Autor"></p:menuitem>
+			<p:separator/>
+			<p:menuitem value="Gênero"></p:menuitem>			
+		</p:submenu>
+		<p:submenu label="Cadastro">
+			<p:menuitem value="Empréstimo"></p:menuitem>
+		</p:submenu>
+		<p:submenu label="Sair Sistema">
+			<p:menuitem value="Sair do Sistema (Logout)" action="#{InicioMB.logout()}"></p:menuitem>
+		</p:submenu>
+	</p:menu>
+</h:form>
+
+</h:body>
+</html>
