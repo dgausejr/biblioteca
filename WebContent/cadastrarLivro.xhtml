@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>Cadastro de Livro</title>
+</h:head>
+<h:body>
+	<h:form id="formCadLivro">
+		<h:panelGrid columns="3" >
+		
+			<h:outputLabel for="itTitulo">Titulo:</h:outputLabel>
+			<p:inputText id="itTitulo" required="true" requiredMessage="Campo titulo não informado!" 
+				value="#{cadastrarLivroMB.livro.titulo}" >
+			</p:inputText>
+			<br /><br />
+			<h:outputLabel for="itIsbn">ISBN:</h:outputLabel>
+			<p:inputText id="itIsbn" required="true" requiredMessage="Campo isbn não informado!" 
+				value="#{cadastrarLivroMB.livro.isbn}" >
+			</p:inputText>
+			<br /><br />
+			<h:outputLabel for="itDPub">Data Publicação:</h:outputLabel>
+			<p:calendar id="itDPub" value="#{cadastrarLivroMB.livro.data_pub}" pattern="dd/MM/yyyy HH:mm:ss" />
+			<br /><br />			
+			<h:outputLabel for="itQtd">Quantidade Disponível:</h:outputLabel>
+			<p:inputText id="itQtd" required="true" requiredMessage="Campo quantidade disponivel não informado!" 
+				value="#{cadastrarLivroMB.livro.qtde_disp}" >
+			</p:inputText>
+			<br /><br />		
+				
+			<h:outputLabel for="itGeneroGravado">Gênero Gravado:</h:outputLabel>
+			<p:selectOneMenu id="itGeneroGravado" value="#{cadastrarLivroMB.livro.id_genero}" 
+				required="true" requiredMessage="Campo genero não informado!">
+				<f:selectItems value="#{cadastrarLivroMB.listarGeneros()}" var="generoArr" 
+							itemLabel="#{generoArr.descricao}" itemValue="#{generoArr.id}">
+				</f:selectItems>
+			</p:selectOneMenu>
+			
+			<br></br>
+			<h:outputLabel for="itAutorGravado">Autor Gravado:</h:outputLabel>
+			<p:selectOneMenu id="itAutorGravado" value="#{cadastrarLivroMB.livro.id_autor}" 
+				required="true" requiredMessage="Campo autor não informado!">
+				<f:selectItems value="#{cadastrarLivroMB.listarAutores()}" var="autorArr" 
+							itemLabel="#{autorArr.nome}" itemValue="#{autorArr.id}">
+				</f:selectItems>
+			</p:selectOneMenu>
+			
+			<br></br>	
+						
+			<p:commandButton value="Cadastrar" actionListener="#{cadastrarLivroMB.efetuarCadastro}" ajax="false" />				 
+		</h:panelGrid>
+	</h:form>
+	
+	<br /><br />	
+	
+	<h:form>
+		<p:dataTable var="livro" value="#{cadastrarLivroMB.listaLivros}">
+			<f:facet name="header">Livros Cadastrados</f:facet>
+			<p:column headerText="Id">
+				#{livro.id}
+			</p:column>
+			<p:column headerText="Titulo">
+				#{livro.titulo}
+			</p:column>
+			<p:column headerText="ISBN">
+				#{livro.isbn}
+			</p:column>
+			<p:column headerText="Data Publicação">
+				#{livro.data_pub}
+			</p:column>
+			<p:column headerText="Qtde Disponivel">
+				#{livro.qtde_disp}
+			</p:column>
+		   <p:column headerText="Ação">
+				
+				<p:commandButton value="Excluir" action="#{cadastrarLivroMB.excluirLivro(livro.id)}" ajax="false" />
+				
+		   </p:column>
+
+		</p:dataTable>
+	</h:form>
+
+<br></br>
+<h:form id="formSairLivro">
+		<h:panelGrid columns="3">
+			<br /><br />
+			<p:commandButton value="Cancelar/Voltar" action="#{InicioMB.voltarPaginaInicial}" ajax="false"></p:commandButton>
+		</h:panelGrid>
+</h:form>
+
+</h:body>
+</html>

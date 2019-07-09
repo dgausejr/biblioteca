@@ -4,6 +4,12 @@
 	
               <provider>org.hibernate.ejb.HibernatePersistence</provider>         
               <class>br.com.entity.Usuario</class>
+              <class>br.com.entity.Aluno</class>
+              <class>br.com.entity.Autor</class>
+              <class>br.com.entity.Genero</class>
+              <class>br.com.entity.Livro</class>
+              <class>br.com.entity.Funcionario</class>
+              <class>br.com.entity.Emprestimo</class>
    
               <properties>
 

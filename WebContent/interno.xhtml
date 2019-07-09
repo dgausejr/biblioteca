@@ -12,17 +12,18 @@
 
 <h:form>
 	<p:menu>
-		<p:submenu label="Pré-Cadastros">
-			<p:menuitem value="Funcionário"></p:menuitem>
+		<p:submenu label="Pré-Cadastros">		
+			<p:menuitem value="Funcionário" action="#{cadastrarFuncionarioMB.cadastrar}"></p:menuitem>
+			<p:separator/>			
+			<p:menuitem value="Autor" action="#{cadastrarAutorMB.cadastrar}"></p:menuitem>
 			<p:separator/>
-			<p:menuitem value="Livro"></p:menuitem>
+			<p:menuitem value="Gênero" action="#{cadastrarGeneroMB.cadastrar}"></p:menuitem>
 			<p:separator/>
-			<p:menuitem value="Autor"></p:menuitem>
-			<p:separator/>
-			<p:menuitem value="Gênero"></p:menuitem>			
+			<p:menuitem value="Livro" action="#{cadastrarLivroMB.cadastrar}"></p:menuitem>
+			<p:separator/>			
 		</p:submenu>
 		<p:submenu label="Cadastro">
-			<p:menuitem value="Empréstimo"></p:menuitem>
+			<p:menuitem value="Empréstimo" action="#{cadastrarEmprestimoMB.cadastrar}"></p:menuitem>
 		</p:submenu>
 		<p:submenu label="Sair Sistema">
 			<p:menuitem value="Sair do Sistema (Logout)" action="#{InicioMB.logout()}"></p:menuitem>

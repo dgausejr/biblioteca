@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+<title>Cadastro de Autor</title>
+</h:head>
+<h:body>
+
+	<h:form id="formCadAutor">		
+		<h:panelGrid >		
+			<h:outputLabel for="itNome">Nome:</h:outputLabel>
+			<p:inputText id="itNome" required="true" requiredMessage="Campo nome não informado!" 
+				value="#{cadastrarAutorMB.autor.nome}" >
+			</p:inputText>		
+						
+			<p:commandButton value="Cadastrar" actionListener="#{cadastrarAutorMB.efetuarCadastro}" ajax="false" />
+		</h:panelGrid>		
+	</h:form>	
+	<br /><br />	
+	
+	<h:form>
+		<p:dataTable var="autor" value="#{cadastrarAutorMB.listaAutores}">
+			<f:facet name="header">Autores Cadastrados</f:facet>
+			<p:column headerText="Id">
+				#{autor.id}
+			</p:column>
+			<p:column headerText="Nome">
+				#{autor.nome}
+			</p:column>			
+		   <p:column headerText="Ação">				
+				<p:commandButton value="Excluir" action="#{cadastrarAutorMB.excluirAutor(autor.id)}" ajax="false" />				
+		   </p:column>
+		</p:dataTable>
+	</h:form>
+	<br></br>
+	
+	<h:form id="formSairAutor">
+			<h:panelGrid columns="3">
+				<br /><br />
+				<p:commandButton value="Cancelar/Voltar" action="#{InicioMB.voltarPaginaInicial}" ajax="false"></p:commandButton>
+			</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+<title>Cadastro de Alunos</title>
+</h:head>
+<h:body>
+
+	<h:form id="formCadAluno">		
+		<h:panelGrid >		
+			<h:outputLabel for="itNome">Nome:</h:outputLabel>
+			<p:inputText id="itNome" required="true" requiredMessage="Campo nome não informado!" 
+				value="#{cadastrarAlunoMB.aluno.nome}" >
+			</p:inputText>
+			<h:outputLabel for="itCelular">Celular:</h:outputLabel>
+			<p:inputText id="itCelular" required="true" requiredMessage="Campo celular não informado!" 
+				value="#{cadastrarAlunoMB.aluno.celular}" >
+			</p:inputText>
+			<h:outputLabel for="itEmail">Email:</h:outputLabel>
+			<p:inputText id="itEmail" required="true" requiredMessage="Campo e-mail não informado!" 
+				value="#{cadastrarAlunoMB.aluno.email}" >
+			</p:inputText>
+			<h:outputLabel for="itNasc">Data Nascimento:</h:outputLabel>
+			<p:inputText id="itNasc" required="true" requiredMessage="Campo data nascimento não informado!" 
+				value="#{cadastrarAlunoMB.aluno.nasc}" >
+			</p:inputText>			
+						
+			<p:commandButton value="Cadastrar" actionListener="#{cadastrarAlunoMB.efetuarCadastro}" ajax="false" />
+		</h:panelGrid>		
+	</h:form>	
+	<br /><br />	
+	
+	<h:form>
+		<p:dataTable var="aluno" value="#{cadastrarAlunoMB.listaAlunos}">
+			<f:facet name="header">Alunos Cadastrados</f:facet>
+			<p:column headerText="Id">
+				#{aluno.id}
+			</p:column>
+			<p:column headerText="Nome">
+				#{aluno.nome}
+			</p:column>
+			<p:column headerText="Celular">
+				#{aluno.celular}
+			</p:column>
+			<p:column headerText="Email">
+				#{aluno.email}
+			</p:column>
+			<p:column headerText="Data Nascimento">
+				#{aluno.nasc}
+			</p:column>
+		   <p:column headerText="Ação">				
+				<p:commandButton value="Excluir" action="#{cadastrarAlunoMB.excluirAluno(aluno.id)}" ajax="false" />				
+		   </p:column>
+		</p:dataTable>
+	</h:form>
+	<br></br>
+	
+	<h:form id="formSairAluno">
+			<h:panelGrid columns="3">
+				<br /><br />
+				<p:commandButton value="Cancelar/Voltar" action="#{InicioMB.voltarPaginaInicial}" ajax="false"></p:commandButton>
+			</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
