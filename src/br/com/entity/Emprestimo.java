@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -13,7 +15,9 @@ public class Emprestimo implements Serializable {
 	
 	@Id
 	private int id;
+	@Temporal(value = TemporalType.DATE)
 	private Date data_emp;
+	@Temporal(value = TemporalType.DATE)
 	private Date data_prev_dev;
 	private int id_livro;
 	private int id_aluno;

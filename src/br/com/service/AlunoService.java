@@ -17,7 +17,7 @@ public class AlunoService {
 	public void gravar(Aluno aluno, EntityManager em){
 		alunoRepository.gravar(aluno, em);
 	}
-
+	
 	public void excluir(int id, EntityManager em){
 		alunoRepository.excluir(id, em);
 	}

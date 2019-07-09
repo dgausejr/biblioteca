@@ -13,15 +13,14 @@ import javax.persistence.Persistence;
 import javax.transaction.NotSupportedException;
 import javax.transaction.SystemException;
 
-import br.com.entity.Funcionario;
 import br.com.entity.Aluno;
 import br.com.entity.Livro;
-import br.com.entity.Emprestimo; 
-import br.com.service.FuncionarioService;
+import br.com.entity.Funcionario;
+import br.com.entity.Emprestimo;
 import br.com.service.AlunoService;
 import br.com.service.LivroService;
+import br.com.service.FuncionarioService;
 import br.com.service.EmprestimoService;
-
 
 @Named("cadastrarEmprestimoMB")
 @SessionScoped
@@ -36,11 +35,11 @@ public class EmprestimoMB implements Serializable {
 	@Inject
 	private EmprestimoService emprestimoService;
 	@Inject
+	private AlunoService alunoService;
+	@Inject
 	private LivroService livroService;
 	@Inject
 	private FuncionarioService funcionarioService;
-	@Inject
-	private AlunoService alunoService;
 
 	private EntityManager em;
 	private EntityManagerFactory managerfactory;
@@ -101,16 +100,16 @@ public class EmprestimoMB implements Serializable {
 		return "cadastrarEmprestimo";
     }
 	
-	public List<Funcionario> listarFuncionarios() throws NotSupportedException, SystemException {
-		return funcionarioService.listaFuncionarios(em);
-    }
-	
 	public List<Aluno> listarAlunos() throws NotSupportedException, SystemException {
 		return alunoService.listarAlunos(em);
     }
 	
 	public List<Livro> listarLivros() throws NotSupportedException, SystemException {
 		return livroService.listaLivros(em);
+    }
+	
+	public List<Funcionario> listarFuncionarios() throws NotSupportedException, SystemException {
+		return funcionarioService.listaFuncionarios(em);
     }
 	
 	public List<Emprestimo> listarEmprestimos() throws NotSupportedException, SystemException {
@@ -120,7 +119,7 @@ public class EmprestimoMB implements Serializable {
 	public String excluirEmprestimo(int id) throws NotSupportedException, SystemException {
 		emprestimoService.excluir(id, em);
 		atualizarListaEmprestimos();
-		return "cadastrarEmprestimo";
+		return "cadastrarEmprestimos";
     }
 	
 }

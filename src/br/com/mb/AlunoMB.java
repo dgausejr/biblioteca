@@ -70,7 +70,7 @@ public class AlunoMB implements Serializable {
 	private void atualizarListaAlunos(){
 		listaAlunos = alunoService.listarAlunos(em);
 	}
-
+	
 	public String cadastrar() {
 		atualizarListaAlunos();
 		return "cadastrarAluno";
@@ -86,7 +86,7 @@ public class AlunoMB implements Serializable {
 		return "cadastrarAluno";
     }
 	
-	public String excluirAluno(int id) throws NotSupportedException, SystemException {
+		public String excluirAluno(int id) throws NotSupportedException, SystemException {
 		alunoService.excluir(id, em);
 		atualizarListaAlunos();
 		return "cadastrarAluno";

@@ -11,10 +11,12 @@
 <title>Cadastro de Alunos</title>
 </h:head>
 <h:body>
+<h3>Cadastro de Aluno</h3>
 
-	<h:form id="formCadAluno">		
-		<h:panelGrid >		
-			<h:outputLabel for="itNome">Nome:</h:outputLabel>
+	<h:form id="formCadAluno">
+		<p:growl id="mensagem" sticky="true" />		
+		<h:panelGrid columns="2" border="1">
+			<h:outputLabel for="itNome">Nome:</h:outputLabel>		
 			<p:inputText id="itNome" required="true" requiredMessage="Campo nome não informado!" 
 				value="#{cadastrarAlunoMB.aluno.nome}" >
 			</p:inputText>
@@ -27,14 +29,13 @@
 				value="#{cadastrarAlunoMB.aluno.email}" >
 			</p:inputText>
 			<h:outputLabel for="itNasc">Data Nascimento:</h:outputLabel>
-			<p:inputText id="itNasc" required="true" requiredMessage="Campo data nascimento não informado!" 
-				value="#{cadastrarAlunoMB.aluno.nasc}" >
-			</p:inputText>			
-						
+			<h:inputText id="itNasc" size="10" value="#{cadastrarAlunoMB.aluno.nasc}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:inputText>
+			<br/>		
 			<p:commandButton value="Cadastrar" actionListener="#{cadastrarAlunoMB.efetuarCadastro}" ajax="false" />
 		</h:panelGrid>		
 	</h:form>	
-	<br /><br />	
 	
 	<h:form>
 		<p:dataTable var="aluno" value="#{cadastrarAlunoMB.listaAlunos}">
@@ -54,16 +55,14 @@
 			<p:column headerText="Data Nascimento">
 				#{aluno.nasc}
 			</p:column>
-		   <p:column headerText="Ação">				
+		   <p:column headerText="Ação">		
 				<p:commandButton value="Excluir" action="#{cadastrarAlunoMB.excluirAluno(aluno.id)}" ajax="false" />				
 		   </p:column>
 		</p:dataTable>
 	</h:form>
-	<br></br>
 	
 	<h:form id="formSairAluno">
 			<h:panelGrid columns="3">
-				<br /><br />
 				<p:commandButton value="Cancelar/Voltar" action="#{InicioMB.voltarPaginaInicial}" ajax="false"></p:commandButton>
 			</h:panelGrid>
 	</h:form>

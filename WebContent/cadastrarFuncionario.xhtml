@@ -11,14 +11,16 @@
 <title>Cadastro de Funcionario</title>
 </h:head>
 <h:body>
+<h3>Cadastro de Funcionario</h3>
 
-	<h:form id="formCadFuncionario">		
-		<h:panelGrid >		
+	<h:form id="formCadFuncionario">
+		<p:growl id="mensagem" sticky="true" />		
+		<h:panelGrid columns="2" border="1">			
 			<h:outputLabel for="itNome">Nome:</h:outputLabel>
 			<p:inputText id="itNome" required="true" requiredMessage="Campo nome não informado!" 
 				value="#{cadastrarFuncionarioMB.funcionario.nome}" >
 			</p:inputText>		
-						
+			<br/>			
 			<p:commandButton value="Cadastrar" actionListener="#{cadastrarFuncionarioMB.efetuarCadastro}" ajax="false" />
 		</h:panelGrid>		
 	</h:form>	

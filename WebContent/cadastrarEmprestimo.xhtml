@@ -10,21 +10,25 @@
 <title>Cadastro de Empréstimo</title>
 </h:head>
 <h:body>
+<h3>Cadastro de Emprestimo</h3>
 	<h:form id="formCadEmprestimo">
-		<h:panelGrid columns="3" >
-		
+		<p:growl id="mensagem" sticky="true" />
+		<h:panelGrid columns="2" border="1">			
 			<h:outputLabel for="itDEmp">Data Emprestimo:</h:outputLabel>
-			<p:inputText id="itDEmp" required="true" requiredMessage="Campo data emprestimo não informado!" 
-				value="#{cadastrarEmprestimoMB.emprestimo.data_emp}" >
-			</p:inputText>
-			<br /><br />
-			
+			<h:inputText id="itDEmp" size="10" value="#{cadastrarEmprestimoMB.emprestimo.data_emp}" required="true" requiredMessage="Campo Data Empréstimo não informado!">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:inputText>						
 			<h:outputLabel for="itDPrevDev">Data Prevista Devolução:</h:outputLabel>
-			<p:inputText id="itDPrevDev" required="true" requiredMessage="Campo data prevista devolução não informado!" 
-				value="#{cadastrarEmprestimoMB.emprestimo.data_prev_dev}" >
-			</p:inputText>
-			<br /><br />
-							
+			<h:inputText id="itDPrevDev" size="10" value="#{cadastrarEmprestimoMB.emprestimo.data_prev_dev}" required="true" requiredMessage="Campo Previsão de Devolução não informado!">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:inputText>
+			<h:outputLabel for="itAlunoGravado">Aluno Gravado:</h:outputLabel>
+			<p:selectOneMenu id="itAlunoGravado" value="#{cadastrarEmprestimoMB.emprestimo.id_aluno}" 
+				required="true" requiredMessage="Campo aluno não informado!">
+				<f:selectItems value="#{cadastrarEmprestimoMB.listarAlunos()}" var="alunoArr" 
+							itemLabel="#{alunoArr.nome}" itemValue="#{alunoArr.id}">
+				</f:selectItems>
+			</p:selectOneMenu>	
 			<h:outputLabel for="itLivroGravado">Livro Gravado:</h:outputLabel>
 			<p:selectOneMenu id="itLivroGravado" value="#{cadastrarEmprestimoMB.emprestimo.id_livro}" 
 				required="true" requiredMessage="Campo livro não informado!">
@@ -32,45 +36,38 @@
 							itemLabel="#{livroArr.titulo}" itemValue="#{livroArr.id}">
 				</f:selectItems>
 			</p:selectOneMenu>			
-			<br></br>
-			
-			<h:outputLabel for="itAlunoGravado">Aluno Gravado:</h:outputLabel>
-			<p:selectOneMenu id="itAlunoGravado" value="#{cadastrarEmprestimoMB.emprestimo.id_aluno}" 
-				required="true" requiredMessage="Campo aluno não informado!">
-				<f:selectItems value="#{cadastrarEmprestimoMB.listarAlunos()}" var="alunoArr" 
-							itemLabel="#{alunoArr.nome}" itemValue="#{alunoArr.id}">
-				</f:selectItems>
-			</p:selectOneMenu>
-			
-			<br></br>
-			
 			<h:outputLabel for="itFuncionarioGravado">Funcionario Gravado:</h:outputLabel>
 			<p:selectOneMenu id="itFuncionarioGravado" value="#{cadastrarEmprestimoMB.emprestimo.id_funcionario}" 
 				required="true" requiredMessage="Campo funcionario não informado!">
-				<f:selectItems value="#{cadastrarEmprestimoMB.listaEmprestimos()}" var="emprestimoArr" 
+				<f:selectItems value="#{cadastrarEmprestimoMB.listarFuncionarios()}" var="funcionarioArr" 
 							itemLabel="#{funcionarioArr.nome}" itemValue="#{funcionarioArr.id}">
 				</f:selectItems>
-			</p:selectOneMenu>
-			
-			<br></br>			
-						
-			<p:commandButton value="Cadastrar" actionListener="#{cadastrarLivroMB.efetuarCadastro}" ajax="false" />				 
-		</h:panelGrid>
+			</p:selectOneMenu>	
+			<br/>					
+			<p:commandButton value="Cadastrar" actionListener="#{cadastrarEmprestimoMB.efetuarCadastro}" ajax="false" />				 
+		</h:panelGrid>		
 	</h:form>
-	
-	<br /><br />	
-	
+	<br/>
 	<h:form>
 		<p:dataTable var="emprestimo" value="#{cadastrarEmprestimoMB.listaEmprestimos}">
 			<f:facet name="header">Emprestimos Cadastrados</f:facet>
 			<p:column headerText="Id">
 				#{emprestimo.id}
 			</p:column>
-			<p:column headerText="Data Emprestimo">
+			<p:column headerText="Data Empréstimo">
 				#{emprestimo.data_emp}
 			</p:column>
 			<p:column headerText="Data Prevista Devolução">
 				#{emprestimo.data_prev_dev}
+			</p:column>
+			<p:column headerText="Aluno">
+				#{emprestimo.id_aluno}
+			</p:column>
+			<p:column headerText="Livro">
+				#{emprestimo.id_livro}
+			</p:column>
+			<p:column headerText="Funcionario">
+				#{emprestimo.id_funcionario}
 			</p:column>
 			
 			

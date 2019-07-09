@@ -9,22 +9,16 @@
 <title>Acesso ao Sistema</title>
 </h:head>
 <h:body>
-
+<h3>Sistema Biblioteca 1.0 - Login</h3>
 	<h:form id="formLogin">
-		
-		<h:panelGrid >
-			<p:growl id="mensagem" showDetail="true" sticky="true" />
-		
+		<p:growl id="mensagem" sticky="true" />
+		<h:panelGrid columns="2" border="1">				
 			<h:outputLabel for="itUsuario">Usuário:</h:outputLabel>
 			<p:inputText id="itUsuario" required="true" requiredMessage="Campo usuário não informado!" 
-				value="#{InicioMB.usuario.usuario}" >
-			</p:inputText>
-			
+				value="#{InicioMB.usuario.usuario}" />	
 			<h:outputLabel for="itSenha">Senha:</h:outputLabel>
-			<p:inputText id="itSenha" required="true" requiredMessage="Campo senha não informado!" 
-				value="#{InicioMB.usuario.senha}" >
-			</p:inputText>
-			
+			<p:password id="itSenha" required="true" requiredMessage="Campo senha não informado!" value="#{InicioMB.usuario.senha}" />			
+			<br/>
 			<p:commandButton value="Acessar" action="#{InicioMB.validarUsuario}" ajax="false" />
 		</h:panelGrid>
 

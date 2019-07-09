@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Aluno implements Serializable {
@@ -13,6 +15,7 @@ public class Aluno implements Serializable {
 	private int id;
 	private String nome;
 	private  String celular;
+	@Temporal(value = TemporalType.DATE)
 	private Date nasc;
 	private String email;
 		

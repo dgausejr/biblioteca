@@ -10,27 +10,26 @@
 <title>Cadastro de Livro</title>
 </h:head>
 <h:body>
+<h3>Cadastro de Livro</h3>
 	<h:form id="formCadLivro">
-		<h:panelGrid columns="3" >
-		
+		<p:growl id="mensagem" sticky="true" />
+		<h:panelGrid columns="2" border="1">
 			<h:outputLabel for="itTitulo">Titulo:</h:outputLabel>
 			<p:inputText id="itTitulo" required="true" requiredMessage="Campo titulo não informado!" 
 				value="#{cadastrarLivroMB.livro.titulo}" >
 			</p:inputText>
-			<br /><br />
 			<h:outputLabel for="itIsbn">ISBN:</h:outputLabel>
 			<p:inputText id="itIsbn" required="true" requiredMessage="Campo isbn não informado!" 
 				value="#{cadastrarLivroMB.livro.isbn}" >
 			</p:inputText>
-			<br /><br />
 			<h:outputLabel for="itDPub">Data Publicação:</h:outputLabel>
-			<p:calendar id="itDPub" value="#{cadastrarLivroMB.livro.data_pub}" pattern="dd/MM/yyyy HH:mm:ss" />
-			<br /><br />			
+			<h:inputText id="itDPub" size="10" value="#{cadastrarLivroMB.livro.data_pub}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:inputText>		
 			<h:outputLabel for="itQtd">Quantidade Disponível:</h:outputLabel>
 			<p:inputText id="itQtd" required="true" requiredMessage="Campo quantidade disponivel não informado!" 
 				value="#{cadastrarLivroMB.livro.qtde_disp}" >
-			</p:inputText>
-			<br /><br />		
+			</p:inputText>	
 				
 			<h:outputLabel for="itGeneroGravado">Gênero Gravado:</h:outputLabel>
 			<p:selectOneMenu id="itGeneroGravado" value="#{cadastrarLivroMB.livro.id_genero}" 
@@ -40,7 +39,6 @@
 				</f:selectItems>
 			</p:selectOneMenu>
 			
-			<br></br>
 			<h:outputLabel for="itAutorGravado">Autor Gravado:</h:outputLabel>
 			<p:selectOneMenu id="itAutorGravado" value="#{cadastrarLivroMB.livro.id_autor}" 
 				required="true" requiredMessage="Campo autor não informado!">
@@ -48,15 +46,13 @@
 							itemLabel="#{autorArr.nome}" itemValue="#{autorArr.id}">
 				</f:selectItems>
 			</p:selectOneMenu>
-			
-			<br></br>	
+			<br/>
 						
 			<p:commandButton value="Cadastrar" actionListener="#{cadastrarLivroMB.efetuarCadastro}" ajax="false" />				 
 		</h:panelGrid>
 	</h:form>
-	
-	<br /><br />	
-	
+		
+	<br/>
 	<h:form>
 		<p:dataTable var="livro" value="#{cadastrarLivroMB.listaLivros}">
 			<f:facet name="header">Livros Cadastrados</f:facet>

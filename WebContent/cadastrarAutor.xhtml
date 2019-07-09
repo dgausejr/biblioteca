@@ -11,18 +11,20 @@
 <title>Cadastro de Autor</title>
 </h:head>
 <h:body>
+<h3>Cadastro de Autor</h3>
 
-	<h:form id="formCadAutor">		
-		<h:panelGrid >		
+	<h:form id="formCadAutor">
+		<p:growl id="mensagem" sticky="true" />		
+		<h:panelGrid columns="2" border="1">
 			<h:outputLabel for="itNome">Nome:</h:outputLabel>
 			<p:inputText id="itNome" required="true" requiredMessage="Campo nome não informado!" 
 				value="#{cadastrarAutorMB.autor.nome}" >
 			</p:inputText>		
-						
+			<br />			
 			<p:commandButton value="Cadastrar" actionListener="#{cadastrarAutorMB.efetuarCadastro}" ajax="false" />
 		</h:panelGrid>		
 	</h:form>	
-	<br /><br />	
+	
 	
 	<h:form>
 		<p:dataTable var="autor" value="#{cadastrarAutorMB.listaAutores}">

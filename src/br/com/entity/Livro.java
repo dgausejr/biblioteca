@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -15,6 +17,7 @@ public class Livro implements Serializable {
 	private String titulo;
 	private String isbn;
 	private int qtde_disp;
+	@Temporal(value = TemporalType.DATE)
 	private Date data_pub;	
 	private int id_genero;
 	private int id_autor;
